@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <title>Demon Slayer</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="app" class="container">
+      <!-- TITLE BAR -->
+      <div class="card-body bg-black text-center">
+        <h3>DEMON SLAYER</h3>
+        <h6 class="lead text-muted">{{header}}</h6>
+      </div>
+      <!--  -->
+
+      <!-- HEALTH CARDS -->
+      <div class="card-body bg-dark text-light">
+        <div>
+          <p class="lead">Player</p>
+          <div class="progress">
+            <div
+              class="progress-bar"
+              :class="{'bg-success': !isPlayerInDanger, 'bg-danger': isPlayerInDanger}"
+              role="progressbar"
+              :style="playerStyle"
+              aria-valuenow="25"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+        </div>
+        <div class="mt-4">
+          <p class="lead">Demon</p>
+          <div class="progress">
+            <div
+              class="progress-bar"
+              :class="{'bg-success': !isDemonInDanger, 'bg-danger': isDemonInDanger}"
+              role="progressbar"
+              :style="demonStyle"
+              aria-valuenow="25"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+
+      <!-- CONTROLS -->
+      <!-- IF GAME NOT STARTED -->
+      <div v-if="!gameStarted" class="jumbotron mb-0 p-3 border">
+        <button @click="startGame()" class="btn btn-info btn-lg btn-block">
+          {{buttonMessage}}
+        </button>
+      </div>
+      <!-- ELSE IF GAME STARTED -->
+      <div v-else class="btn-group jumbotron mb-0 p-3 border">
+        <button @click="play(0)" class="btn btn-primary">
+          Melee Attack
+        </button>
+        <button @click="play(1)" class="btn btn-danger">
+          Use Magic
+        </button>
+        <button @click="play(2)" class="btn btn-success">
+          Heal
+        </button>
+        <button @click="play(3)" class="btn btn-warning">
+          Block
+        </button>
+      </div>
+      <!--  -->
+
+      <!-- LOGS -->
+      <div>
+        <ul class="list-group list-group">
+          <li v-for="log in logs" class="list-group-item">
+            {{log}}
+          </li>
+        </ul>
+      </div>
+      <!--  -->
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

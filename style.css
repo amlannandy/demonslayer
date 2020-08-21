@@ -1,0 +1,16 @@
+.bg-black {
+  color: #fff;
+  background-color: #000;
+}
+.custom-row {
+  justify-content: space-around;
+}
+
+div.scroll {
+  margin: 4px, 4px;
+  padding: 4px;
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: justify;
+}
