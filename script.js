@@ -27,26 +27,25 @@ const getDamageValues = (demonMove, playerMove) => {
       if (playerMove == 'Block') {
         logMessage += "Demon's attack is unsuccessful.";
       } else {
-        const attackDamage = getRandomInt(10);
+        const attackDamage = getRandomInt(11);
         playerDamage += attackDamage;
         logMessage += `Demon attacks for ${attackDamage} dmg. `;
       }
       break;
     case 'Special':
-      const specialSelfDamage = getRandomInt(5);
-      const specialPlayerDamage = getRandomInt(20);
+      const specialSelfDamage = getRandomInt(16);
+      const specialPlayerDamage = getRandomInt(21);
       demonDamage += specialSelfDamage;
       playerDamage += specialPlayerDamage;
-      logMessage += `Demon uses special for ${specialPlayerDamage} dmg to Player and ${specialSelfDamage} dmg to self. `;
+      logMessage += `Demon uses magic for ${specialPlayerDamage} dmg to Player and ${specialSelfDamage} dmg to self. `;
       break;
     case 'Heal':
-      const healAmount = getRandomInt(10);
+      const healAmount = getRandomInt(11);
       demonHeal += healAmount;
       logMessage += `Demon heals for ${healAmount}. `;
       break;
     case 'Block':
-      demonDamage += 2;
-      logMessage += 'Demon blocks for 2 dmg to self. ';
+      logMessage += 'Demon blocks. ';
       break;
   }
 
@@ -55,26 +54,25 @@ const getDamageValues = (demonMove, playerMove) => {
       if (demonMove == 'Block') {
         logMessage += "Player's attack is unsuccessful.";
       } else {
-        const attackDamage = getRandomInt(10);
+        const attackDamage = getRandomInt(11);
         demonDamage += attackDamage;
         logMessage += `Player attacks for ${attackDamage} dmg. `;
       }
       break;
     case 'Special':
-      const specialSelfDamage = getRandomInt(5);
-      const specialDemonDamage = getRandomInt(20);
+      const specialSelfDamage = getRandomInt(16);
+      const specialDemonDamage = getRandomInt(21);
       playerDamage += specialSelfDamage;
       demonDamage += specialDemonDamage;
-      logMessage += `Player uses special for ${specialDemonDamage} dmg to Demon and ${specialSelfDamage} dmg to self. `;
+      logMessage += `Player uses magic for ${specialDemonDamage} dmg to Demon and ${specialSelfDamage} dmg to self. `;
       break;
     case 'Heal':
-      const healAmount = getRandomInt(10);
+      const healAmount = getRandomInt(11);
       playerHeal += healAmount;
       logMessage += `Player heals for ${healAmount}. `;
       break;
     case 'Block':
-      playerDamage += 2;
-      logMessage += 'Player blocks for 2 dmg to self. ';
+      logMessage += 'Player blocks. ';
       break;
   }
 
@@ -102,7 +100,7 @@ new Vue({
       this.header = 'Save the world!';
     },
     play: function (choice) {
-      const demonMove = getMoveFromNumber(getRandomInt(3));
+      const demonMove = getMoveFromNumber(getRandomInt(4));
       const playerMove = getMoveFromNumber(choice);
       const { demonValue, playerValue, logMessage } = getDamageValues(
         demonMove,
